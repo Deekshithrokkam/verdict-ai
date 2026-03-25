@@ -522,7 +522,7 @@ async function speak(text, role='judge'){
   const vc=VOICES[role.toLowerCase()]||VOICES.judge;
   const clean=text.replace(/[*_#`\[\]]/g,'').replace(/\s+/g,' ').trim().slice(0,480);
   try {
-    const res=await fetch('http://localhost:3000/speak',{
+    const res=await fetch('https://verdict-ai-1.onrender.com',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -629,7 +629,7 @@ async function callAI(userMsg){
   const prompt=`Case: ${S.caseData.title} | Type: ${S.caseType} | Your role(user): ${S.role} | Difficulty: ${S.diff} | Phase: ${PHASES[S.phase]} | Synopsis: ${S.caseData.synopsis}\n\n${userMsg}`;
   contents.push({role:'user',parts:[{text:prompt}]});
   try {
-    const res=await fetch("http://localhost:3000/ai",{
+    const res=await fetch("https://verdict-ai-1.onrender.com/ai",{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
