@@ -522,7 +522,7 @@ async function speak(text, role='judge'){
   const vc=VOICES[role.toLowerCase()]||VOICES.judge;
   const clean=text.replace(/[*_#`\[\]]/g,'').replace(/\s+/g,' ').trim().slice(0,480);
   try {
-    const res=await fetch('https://verdict-ai-1.onrender.com',{
+    const res=await fetch('https://verdict-ai-1.onrender.com/speak',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
